@@ -9,22 +9,22 @@ $ kind create cluster
 $ k apply -k k8s
 ```
 
-# To see the logs [blocks the terminal]
+To see the logs [blocks the terminal]
 ```
 $ stern node
 ```
-# to expose services locally [blocks the terminal]
+to expose services locally [blocks the terminal]
 ```
 $ k port-forward deployment/emqx 18083:18083
 $ k port-forward deployment/mqtt-spring-integration-node-backend 8080:8080
 ```
 
-# Send a message to node with id = a776a73c-74b3-36ed-fbe6-c64ddc7bd262 (look on logs)
+Send a message to node with id = a776a73c-74b3-36ed-fbe6-c64ddc7bd262 (look on logs)
 ```
 http :8080/send-to-node node==a776a73c-74b3-36ed-fbe6-c64ddc7bd262
 ```
 
-# Send a broadcast message
+Send a broadcast message
 ```
 http :8080/send-broadcast
 ```
