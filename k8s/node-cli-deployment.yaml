@@ -5,7 +5,7 @@ metadata:
     app: mqtt-spring-integration-node-client
   name: mqtt-spring-integration-node-client
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: mqtt-spring-integration-node-client
