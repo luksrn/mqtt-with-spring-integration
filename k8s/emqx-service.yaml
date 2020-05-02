@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: emqx
+  name: emqx
+spec:
+  ports:
+  - port: 18083
+    name: dashboard-port
+    protocol: TCP
+    targetPort: 18083
+  - port: 1883
+    name: broker-port
+    protocol: TCP
+    targetPort: 1883
+  selector:
+    app: emqx
+status:
+  loadBalancer: {}

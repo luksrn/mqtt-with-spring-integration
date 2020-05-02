@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mqtt-spring-integration-node-backend
+  name: mqtt-spring-integration-node-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mqtt-spring-integration-node-backend
+  template:
+    metadata:
+      labels:
+        app: mqtt-spring-integration-node-backend
+    spec:
+      containers:
+      - image: luksrn/mqtt-spring-integration-node-backend
+        name: mqtt-spring-integration-node-backend

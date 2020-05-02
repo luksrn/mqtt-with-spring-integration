@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: emqx
+  name: emqx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: emqx
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: emqx
+    spec:
+      containers:
+      - image: emqx/emqx
+        name: emqx
+        resources: {}
+status: {}
