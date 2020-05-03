@@ -1,5 +1,5 @@
-# spring-integration-mqtt
-Simple project using Spring Integration MQTT and writen using Kotlin with the interest in learning and practice.
+# spring integration 
+Simple project using Spring Integration MQTT/WebFlux and writen using Kotlin with the interest in learning and practice.
 
 It consists of a backend with capacities to sending messages to the MQTT broker, to reach all nodes or to a specific one. Also, it receives health information about each node every 30 seconds.
 
