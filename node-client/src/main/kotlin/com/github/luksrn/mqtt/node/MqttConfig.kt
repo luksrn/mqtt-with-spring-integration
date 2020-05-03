@@ -40,14 +40,14 @@ class MqttConfig {
     }
 
     @Bean
-    fun inboundServerFlow(): IntegrationFlow {
-        return IntegrationFlows.from(inboundServerMessage())
-                .handle(NodeClientMessageHandler())
+    fun mqttInboundServerSimpleCommandFlow(): IntegrationFlow {
+        return IntegrationFlows.from(nodeInboundServerCommandMessageProducer())
+                .handle(MessageHandler(::println))
                 .get()
     }
 
     @Bean
-    fun inboundServerMessage(): MessageProducerSupport {
+    fun nodeInboundServerCommandMessageProducer(): MessageProducerSupport {
         return MqttPahoMessageDrivenChannelAdapter(
                 "node-${id}-inbound",
                 mqttClientFactory(),
@@ -57,7 +57,7 @@ class MqttConfig {
     }
 
     @Bean
-    fun pushHealthFlow(): IntegrationFlow? {
+    fun mqttOutboundPushHealthFlow(): IntegrationFlow? {
         return IntegrationFlows.from(
                     Supplier { NodeHeathStatus(id, true, Random.nextInt(IntRange(90, 100))) },
                     Consumer { p -> p.poller(Pollers.fixedRate(30_000).maxMessagesPerPoll(1)) }
