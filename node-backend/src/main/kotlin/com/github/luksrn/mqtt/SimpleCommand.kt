@@ -1,5 +1,8 @@
 package com.github.luksrn.mqtt
 
-import java.time.Instant
+import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonProperty
 
-data class SimpleCommand (val payload: String, val createdAt : Instant = Instant.now())
+data class SimpleCommand @JsonCreator constructor (
+        @JsonProperty("message") val message: String
+)
