@@ -1,6 +1,7 @@
 package com.github.luksrn.mqtt
 
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.integration.dsl.IntegrationFlow
@@ -18,11 +19,14 @@ import java.net.InetAddress
 @Configuration
 class MqttConfig {
 
+    @Value("\${mqtt.broker}")
+    lateinit var brokerServerURI: String
+
     @Bean
     fun mqttPahoClientFactory(): MqttPahoClientFactory {
         val factory = DefaultMqttPahoClientFactory()
         val options = MqttConnectOptions().apply {
-            serverURIs = arrayOf("tcp://emqx:1883")
+            serverURIs = arrayOf(brokerServerURI)
         }
         factory.connectionOptions = options
         return factory
