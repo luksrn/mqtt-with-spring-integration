@@ -19,13 +19,13 @@ $ k port-forward deployment/emqx 18083:18083
 $ k port-forward deployment/mqtt-spring-integration-node-backend 8080:8080
 ```
 
-Send a message to node with id = a776a73c-74b3-36ed-fbe6-c64ddc7bd262 (look on logs)
+Send a message to node with id (look on logs)
 ```
-http :8080/send-to-node node==a776a73c-74b3-36ed-fbe6-c64ddc7bd262
+http POST :8080/send-to-node/e32457e6-3756-469b-a5a2-c67414bd2c24 message="Está sendo enviado via flux"
 ```
 
 Send a broadcast message
 ```
-http :8080/send-broadcast
+http POST :8080/send-broadcast message="Broadcast Está sendo enviado via flux"
 ```
 
