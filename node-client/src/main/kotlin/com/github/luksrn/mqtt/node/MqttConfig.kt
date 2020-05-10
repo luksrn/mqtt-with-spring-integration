@@ -31,7 +31,7 @@ class MqttConfig {
 
     @Bean
     fun mqttClientFactory(): MqttPahoClientFactory {
-        val factory = DefaultMqttPahoClientFactory()
+            val factory = DefaultMqttPahoClientFactory()
         val options = MqttConnectOptions().apply {
             serverURIs = arrayOf(brokerServerURI)
         }
@@ -51,7 +51,7 @@ class MqttConfig {
         return MqttPahoMessageDrivenChannelAdapter(
                 "node-${id}-inbound",
                 mqttClientFactory(),
-                "node-${id}", "node-broadcast").apply {
+                "nodes/${id}/commands", "nodes/broadcast").apply {
             setCompletionTimeout(5000)
         }
     }
@@ -74,7 +74,7 @@ class MqttConfig {
                 "node-${id}",
                 mqttClientFactory()).apply {
             setAsync(true)
-            setDefaultTopic("node-health")
+            setDefaultTopic("nodes/${id}/health")
         }
     }
 }

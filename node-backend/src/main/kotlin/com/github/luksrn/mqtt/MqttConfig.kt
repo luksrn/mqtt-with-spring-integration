@@ -44,11 +44,11 @@ class MqttConfig {
     @Bean
     fun mqttNodeOutboundMessageHandler(): MessageHandler {
         return MqttPahoMessageHandler(
-                "server-node-${InetAddress.getLocalHost().hostName}",
+                "server-node-outbound-${InetAddress.getLocalHost().hostName}",
                 mqttPahoClientFactory()).apply {
             setAsync(true)
             setTopicExpressionString("headers['node_id']")
-            setDefaultTopic("node-broadcast")
+            setDefaultTopic("nodes/broadcast")
         }
     }
 
@@ -62,9 +62,9 @@ class MqttConfig {
     @Bean
     fun mqttInboundNodeMessageProducer(): MessageProducerSupport {
         return MqttPahoMessageDrivenChannelAdapter(
-                "remote-node-inbound",
+                "server-node-inbound-${InetAddress.getLocalHost().hostName}",
                 mqttPahoClientFactory(),
-                "node-health").apply {
+                "\$share/my-shared-subscriber-group/nodes/+/health").apply {
             setCompletionTimeout(5000)
         }
     }

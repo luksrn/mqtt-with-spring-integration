@@ -42,8 +42,9 @@ class FluxConfig {
                             m.produces(MediaType.APPLICATION_JSON_VALUE)
                             m.methods(HttpMethod.POST)
                         }
-                        .headerExpression("node_id", "'node-' + #pathVariables.id")
+                        .headerExpression("node_id", "'nodes/' + #pathVariables.id + '/commands'")
                         .requestPayloadType(SimpleCommand::class.java))
+                .log()
                 .channel(simpleCommandMessageChannel())
                 .handle { p: SimpleCommand, _ -> Mono.just(p) }
                 .get()
