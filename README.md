@@ -1,5 +1,5 @@
-# spring-integration-mqtt
-Simple project using Spring Integration MQTT and writen using Kotlin with the interest in learning and practice.
+# spring integration 
+Simple project using Spring Integration MQTT/WebFlux and writen using Kotlin with the interest in learning and practice.
 
 It consists of a backend with capacities to sending messages to the MQTT broker, to reach all nodes or to a specific one. Also, it receives health information about each node every 30 seconds.
 
@@ -21,11 +21,11 @@ $ k port-forward deployment/mqtt-spring-integration-node-backend 8080:8080
 
 Send a message to node with id (look on logs)
 ```
-http POST :8080/send-to-node/e32457e6-3756-469b-a5a2-c67414bd2c24 message="Está sendo enviado via flux"
+http POST :8080/send-to-node/e32457e6-3756-469b-a5a2-c67414bd2c24 message="Direct message"
 ```
 
 Send a broadcast message
 ```
-http POST :8080/send-broadcast message="Broadcast Está sendo enviado via flux"
+http POST :8080/send-broadcast message="Broadcast message"
 ```
 
