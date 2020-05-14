@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: emqx-config
+data:
+  EMQX_LOADED_PLUGINS: "emqx_recon,emqx_retainer,emqx_management,emqx_dashboard,emqx_statsd" #emqx_web_hook
+  EMQX_STATSD__PUSH__GATEWAY__SERVER: "http://pushgateway:9091"
+  #EMQX_WEB__HOOK__API__URL: "https://postb.in/1589417273535-3722110546659"
+  

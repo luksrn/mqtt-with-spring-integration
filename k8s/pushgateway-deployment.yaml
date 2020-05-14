@@ -3,25 +3,22 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: emqx
-  name: emqx
+    app: pushgateway
+  name: pushgateway
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: emqx
+      app: pushgateway
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: emqx
+        app: pushgateway
     spec:
       containers:
-      - image: emqx/emqx
-        name: emqx
-        resources: {}
-        envFrom:
-            - configMapRef:
-                name: emqx-config
+      - image: prom/pushgateway
+        name: pushgateway
+        resources: {}        
 status: {}

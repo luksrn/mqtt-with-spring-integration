@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: pushgateway
+  name: pushgateway
+spec:
+  ports:
+  - port: 9091
+    name: metrics-port
+    protocol: TCP
+    targetPort: 9091  
+  selector:
+    app: pushgateway
+status:
+  loadBalancer: {}
